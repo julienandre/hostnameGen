@@ -22,6 +22,10 @@
     "base32",
     "serialID"
   ],
+  "dependencies": {
+    "bases" : "0.2.1",
+    "commander" : "2.9.0"
+  },
   "author": "idcheckio <julien.andre@ariadnext.com> (https://www.idcheck.io/)",
   "license": "ISC",
   "bugs": {
