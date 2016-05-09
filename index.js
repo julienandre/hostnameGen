@@ -14,13 +14,10 @@ var baseHostname = 'Station-';
 
 
 program
-  .version('1.0.0')
+  .version('1.0.3')
   .usage( '[options]' )
-  .option('-f, --forcehostname [hostname]', 'force a special hostname to be setup.')
-  .option('-s, --setup', 'setup the generated hostname', setup )
+  .option('-s, --setup [hostname]', 'setup the generated hostname or the passed hostname if present'  )
   .parse(process.argv);
-
-
 
 function getHostname( cb )
 {
@@ -38,21 +35,21 @@ function getHostname( cb )
     }
   });
 }
-getHostname(  );
 
-/**
- * Setup the hostname
- */
-function setup(){
-  if( !program.forcehostname ){
+
+if( !program.setup ){ // pas d'argument -s
+  getHostname();
+}else{
+  if( program.setup === true ){  // argument -s sans hostname
     getHostname( function( newhostname ){
       setupFinish(newhostname);
     });
   }else{
-    setupFinish( program.forcehostname );
+    setupFinish( program.setup );
   }
-
 }
+
+
 
 function setupFinish( newhostname ){
   var oldHostname = fs.readFileSync('/etc/hostname', 'utf8').trim();

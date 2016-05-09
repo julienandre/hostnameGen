@@ -32,6 +32,6 @@ sudo hostnamegen -s
 Generate and Setup hostname, need reboot after use to take effect.
 
 ```shell
-sudo hostnamegen -s -f myhostname 
+sudo hostnamegen -s myhostname
 ```
-Setup Hostname with specific hostname in params.
+Setup Hostname with specific hostname in params, need reboot after use to take effect.
