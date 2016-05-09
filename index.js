@@ -22,7 +22,7 @@ program
 
 
 
-function getHostname()
+function getHostname( cb )
 {
   // read the /proc/cpuinfo file and
   fs.readFile('/proc/cpuinfo', 'utf8', function handleCPUInfos (err, data) {
@@ -34,6 +34,7 @@ function getHostname()
       console.log('-- Raw CPU Serial ID retrieved : %s', serialID);
       genHostnameUID = baseHostname + bases.toBase32(bases.fromBase16(serialID));
       console.log('-- Hostname generated : ' + genHostnameUID);
+      cb( genHostnameUID );
     }
   });
 }
@@ -43,19 +44,22 @@ getHostname();
  * Setup the hostname
  */
 function setup(){
-  var newHostName = '';
   if( !program.forcehostname ){
-    getHostname();
-    newHostName = genHostnameUID;
+    getHostname( function( newhostname ){
+      setupFinish(newhostname);
+    });
   }else{
-    newHostName = program.forcehostname;
+    setupFinish( program.forcehostname );
   }
+
+}
+
+function setupFinish( newhostname ){
   var oldHostname = fs.readFileSync('/etc/hostname', 'utf8').trim();
-  console.log('-- Seting up Hostname from '+oldHostname+' to '+ newHostName);
-  fs.writeFileSync('/etc/hostname', newHostName );
+  console.log('-- Seting up Hostname from '+oldHostname+' to '+ newhostname);
+  fs.writeFileSync('/etc/hostname', newhostname );
   var hostsFile = fs.readFileSync('/etc/hosts', 'utf8');
-  var hostsFile2 = hostsFile.replace( oldHostname, newHostName );
+  var hostsFile2 = hostsFile.replace( oldHostname, newhostname );
   fs.writeFileSync( '/etc/hosts', hostsFile2 );
   console.log('-- Seting up Hostname DONE, you have to reboot to take effect !');
 }
-
