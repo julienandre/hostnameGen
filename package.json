@@ -1,0 +1,27 @@
+{
+  "name": "hostnamegen",
+  "version": "1.0.0",
+  "description": "Hostname Generator for RPi Base32 of Serial CPU ID.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julienandre/hostnameGen.git"
+  },
+  "keywords": [
+    "RPi",
+    "hostname",
+    "unique",
+    "generator",
+    "base32",
+    "serialID"
+  ],
+  "author": "idcheckio <julien.andre@ariadnext.com> (https://www.idcheck.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julienandre/hostnameGen/issues"
+  },
+  "homepage": "https://github.com/julienandre/hostnameGen#readme"
+}
