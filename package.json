@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Hostname Generator for RPi Base32 of Serial CPU ID.",
   "main": "index.js",
+  "bin":{
+    "hostnamegen": "index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/julienandre/hostnameGen.git"
   },
+  "preferGlobal" : true,
   "keywords": [
     "RPi",
     "hostname",
