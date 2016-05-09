@@ -1,6 +1,8 @@
 # hostname Generator
 The unique identifier generator for RPi 
 
+TESTE ET FONCTIONNEL SUR Raspberry Pi / Raspbian ONLY !
+
 ## Install
 
 ```javascript
