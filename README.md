@@ -6,7 +6,7 @@ TESTE ET FONCTIONNEL SUR Raspberry Pi / Raspbian ONLY !
 ## Install
 
 ```javascript
-sudo npm install -g hostnameGen
+sudo npm install -g hostnamegen
 ```
 
 ## How does it work ?
