@@ -43,7 +43,13 @@ getHostname();
  * Setup the hostname
  */
 function setup(){
-  var newHostName = ( program.forcehostname )?  program.forcehostname : genHostnameUID;
+  var newHostName = '';
+  if( !program.forcehostname ){
+    getHostname();
+    newHostName = genHostnameUID;
+  }else{
+    newHostName = program.forcehostname;
+  }
   var oldHostname = fs.readFileSync('/etc/hostname', 'utf8').trim();
   console.log('-- Seting up Hostname from '+oldHostname+' to '+ newHostName);
   fs.writeFileSync('/etc/hostname', newHostName );
