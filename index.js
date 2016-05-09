@@ -34,11 +34,11 @@ function getHostname( cb )
       console.log('-- Raw CPU Serial ID retrieved : %s', serialID);
       genHostnameUID = baseHostname + bases.toBase32(bases.fromBase16(serialID));
       console.log('-- Hostname generated : ' + genHostnameUID);
-      cb( genHostnameUID );
+      if( cb ){ cb( genHostnameUID ); }
     }
   });
 }
-getHostname();
+getHostname(  );
 
 /**
  * Setup the hostname

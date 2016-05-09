@@ -1,6 +1,6 @@
 {
   "name": "hostnamegen",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Hostname Generator for RPi Base32 of Serial CPU ID.",
   "main": "index.js",
   "bin":{
